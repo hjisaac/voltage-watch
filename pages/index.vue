@@ -150,10 +150,16 @@
 </template>
 
 <script>
+import fetch from "isomorphic-fetch"
+const stationsUrl = "http://localhost:5000/stations";
+const eventUrl = "http://localhost:5000/events";
+
 export default {
   name: "voltage",
   data() {
     return {
+      voltages : [],
+      frequencies: [],
       tensions: [
         {
           name: "Bénin",
@@ -225,6 +231,10 @@ export default {
   },
   mounted() {
     this.tension_id = this.tensions[0].value;
+
+    fetch(eventUrl).then(response => response.json()).then(data => {
+      console.log("data =>", data)
+    })
   },
 };
 </script>
