@@ -6,9 +6,12 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "api": "json-server --watch api/db.json --routes api/routes.json  --port 5000 --host 127.0.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.29.4"
+  },
   "devDependencies": {
     "core-js": "^3.30.2",
     "nuxt": "^2.16.3"
