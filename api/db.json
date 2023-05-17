@@ -408,6 +408,14 @@
     },
     {
       "id": 103
+    },
+    {
+      "city": "Benin",
+      "id": 104
+    },
+    {
+      "city": "Cotonou",
+      "id": 105
     }
   ],
   "events": [
@@ -1110,6 +1118,56 @@
       "measure": "frequency",
       "value": 59,
       "timestamp": "5/17/2023"
+    },
+    {
+      "measure": "voltage",
+      "value": 202,
+      "timestamp": "2023-05-17T18:49:30.600Z",
+      "id": 101
+    },
+    {
+      "measure": "voltage",
+      "value": 202,
+      "timestamp": "2023-05-17T18:50:06.904Z",
+      "id": 102
+    },
+    {
+      "measure": "voltage",
+      "value": 203,
+      "timestamp": "2023-05-17T18:50:08.850Z",
+      "id": 103
+    },
+    {
+      "measure": "frequency",
+      "value": 60,
+      "timestamp": "2023-05-17T18:50:09.623Z",
+      "id": 104
+    },
+    {
+      "measure": "voltage",
+      "value": 208,
+      "timestamp": "2023-05-17T18:50:10.498Z",
+      "id": 105
+    },
+    {
+      "stationId": 78,
+      "measure": "frequency",
+      "timestamp": "2023-05-17T19:05:02.913Z",
+      "id": 106
+    },
+    {
+      "stationId": 85,
+      "measure": "frequency",
+      "value": 58,
+      "timestamp": "2023-05-17T19:05:53.392Z",
+      "id": 107
+    },
+    {
+      "stationId": 37,
+      "measure": "voltage",
+      "value": 206,
+      "timestamp": "2023-05-17T19:06:00.849Z",
+      "id": 108
     }
   ]
 }
