@@ -1,3 +1,5 @@
+import { API_PORT } from "./config"
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,5 +38,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  env: {
+    API_BASE_URL: `http://localhost:${API_PORT}`,
+  },
+
 }
