@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer components {
+  .vs__dropdown-toggle {
+    @apply w-full h-10 pl-8 pr-6 text-base border-none rounded-md text-slate-500 ring-1 ring-gray-200 placeholder-slate-400;
+  }
+} */
