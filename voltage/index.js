@@ -6,6 +6,9 @@ function fetchStations() {
 
 
 
+
+
+
 class VoltageEvent {
     constructor(name, measure) {
       this.name = name;
