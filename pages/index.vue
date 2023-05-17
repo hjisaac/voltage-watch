@@ -57,6 +57,10 @@
       <h1 class="text-3xl font-black text-slate-900">
         {{ getCurrentZone?.name }}
       </h1>
+      <client-only>
+        <BarChart :data="chartData" />
+        <LineChart :data="chartDataLine" />
+      </client-only>
       <div class="grid gap-4 sm:grid-cols-2">
         <!-- <div
           class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
@@ -172,6 +176,49 @@ export default {
     };
   },
   computed: {
+    chartDataLine() {
+      return {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+        ],
+        datasets: [
+          {
+            label: "Data Set 1",
+            fill: false,
+            tension: 0.1,
+            borderColor: "rgba(255, 99, 132, 1)",
+            data: [65, 59, 80, 81, 56, 55, 40],
+          },
+          {
+            label: "Data Set 2",
+            fill: false,
+            tension: 0.1,
+            borderColor: "rgba(100, 255, 0, 1)",
+            data: [65, 59, 80, 81, 56, 55, 40].reverse(),
+          },
+        ],
+      };
+    },
+    chartData() {
+      return {
+        labels: [1, 2, 3, 4, 5],
+        datasets: [
+          {
+            label: "",
+            data: [2, 1, 16, 3, 2],
+            backgroundColor: "rgba(20, 255, 0, 0.3)",
+            borderColor: "rgba(100, 255, 0, 1)",
+            borderWidth: 2,
+          },
+        ],
+      };
+    },
     getPageTitle() {
       return "welcome Voltage";
     },
