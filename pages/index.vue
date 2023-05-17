@@ -219,14 +219,7 @@ export default {
         ],
       };
     },
-    getPageTitle() {
-      return "welcome Voltage";
-    },
     getCurrentZone() {
-      // console.log(
-      //   "test",
-      //   this.tensions.find((zone) => zone.value === this.tension_id)
-      // );
       return this.tensions.find((zone) => zone.value === this.tension_id);
     },
   },

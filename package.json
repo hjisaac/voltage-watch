@@ -7,12 +7,14 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "api": "json-server --watch api/db/index.js --routes api/routes.json  --port 5000 --host 127.0.0.1"
+    "api": "json-server --watch api/db.json --routes api/routes.json  --port 5000 --host 127.0.0.1"
   },
   "dependencies": {
     "chart.js": "2.9.4",
     "vue-chartjs": "^3.5.1",
-    "vue-select": "^3.20.2"
+    "vue-select": "^3.20.2",
+    "isomorphic-fetch": "^3.0.0",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
