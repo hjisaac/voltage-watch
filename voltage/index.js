@@ -1,10 +1,17 @@
+
+const fetch = require("isomorphic-fetch")
+
+
+const stationsUrl = "http://localhost:5000/stations"
+// console.log(getStations)
+
 function fetchStations() {
     return fetch('https://jsonplaceholder.typicode.com/posts') // Replace with your JSON server endpoint
       .then(response => response.json())
       .then(data => data.map(station => station.title));
   }
 
-
+console.log(fetch)
 
 
 
@@ -60,6 +67,30 @@ class VoltageEvent {
   }
   
   // Start generating voltage data
-  generateVoltageData();
+//   generateVoltageData();
   
 
+console.log(process.env.API_BASE_URL)
+
+const r = fetch(stationsUrl).then(response => {
+    console.log("response count => ", response)
+    return response.json()
+}).then(data => {
+    // console.log("data => ", data)
+})
+
+
+const writeEvent = function(event) {
+    try {
+        fetch(stationsUrl, {
+            method: "POST",
+            body: JSON.stringify({
+                city: "Cotonou",
+            })
+        })
+    } catch (error) {
+        
+    }
+}
+
+writeEvent()
