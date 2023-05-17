@@ -10,6 +10,7 @@
     "api": "json-server --watch api/db/index.js --routes api/routes.json  --port 5000 --host 127.0.0.1"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "moment": "^2.29.4"
   },
   "devDependencies": {
