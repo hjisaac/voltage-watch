@@ -1150,20 +1150,20 @@
       "id": 105
     },
     {
-      "stationId": 78,
+      "stationId": 105,
       "measure": "frequency",
       "timestamp": "2023-05-17T19:05:02.913Z",
       "id": 106
     },
     {
-      "stationId": 85,
+      "stationId": 105,
       "measure": "frequency",
       "value": 58,
       "timestamp": "2023-05-17T19:05:53.392Z",
       "id": 107
     },
     {
-      "stationId": 37,
+      "stationId": 105,
       "measure": "voltage",
       "value": 206,
       "timestamp": "2023-05-17T19:06:00.849Z",

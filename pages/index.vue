@@ -41,10 +41,10 @@
           <label class="relative w-full md:w-96">
             <client-only>
               <v-select
-                v-model="tension_id"
-                :options="tensions"
-                :reduce="(tension) => tension.value"
-                label="name"
+                v-model="user_station_id"
+                :options="stations"
+                :reduce="(station) => station.id"
+                label="city"
               />
             </client-only>
           </label>
@@ -55,7 +55,7 @@
       class="h-[1000px] relative max-w-[1440px] bg-gray-50 mx-auto px-6 xl:px-20 pt-72 sm:pt-40 pb-14 space-y-4 sm:space-y-6"
     >
       <h1 class="text-3xl font-black text-slate-900">
-        {{ getCurrentZone?.name }}
+        {{ getCurrentStation?.city }}
       </h1>
       <client-only>
         <BarChart :data="chartData" />
@@ -150,35 +150,34 @@
 </template>
 
 <script>
-import fetch from "isomorphic-fetch"
+import fetch from "isomorphic-fetch";
 const stationsUrl = "http://localhost:5000/stations";
 const eventUrl = "http://localhost:5000/events";
 
 export default {
   name: "voltage",
+  asyncData() {
+    let user_station_id;
+    let stations = [];
+    fetch(stationsUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("data stations =>", data);
+        stations = data;
+
+        user_station_id = data[0].id;
+      });
+
+    return {
+      user_station_id,
+      stations,
+    };
+  },
   data() {
     return {
-      voltages : [],
+      voltages: [],
       frequencies: [],
-      tensions: [
-        {
-          name: "Bénin",
-          value: "benin1",
-        },
-        {
-          name: "Canada",
-          value: "canada1",
-        },
-        {
-          name: "Brazil",
-          value: "brazil1",
-        },
-        {
-          name: "Suisse",
-          value: "suisse1",
-        },
-      ],
-      tension_id: "",
+      // user_station_id: 0,
     };
   },
   computed: {
@@ -195,14 +194,14 @@ export default {
         ],
         datasets: [
           {
-            label: "Data Set 1",
+            label: "Voltages",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(255, 99, 132, 1)",
             data: [65, 59, 80, 81, 56, 55, 40],
           },
           {
-            label: "Data Set 2",
+            label: "Frequencies",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(100, 255, 0, 1)",
@@ -225,16 +224,30 @@ export default {
         ],
       };
     },
-    getCurrentZone() {
-      return this.tensions.find((zone) => zone.value === this.tension_id);
+    // stationID() {
+    //   return this.stations.find(station => station.)
+    // },
+    getCurrentStation() {
+      return this.stations.find(
+        (station) => station.id === this.user_station_id
+      );
     },
   },
   mounted() {
-    this.tension_id = this.tensions[0].value;
+    // console.log("winboy", this.user_station_id);
+    fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("data voltage =>", data);
+        this.voltages = data;
+      });
 
-    fetch(eventUrl).then(response => response.json()).then(data => {
-      console.log("data =>", data)
-    })
+    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("data frequency =>", data);
+        this.frequencies = data;
+      });
   },
 };
 </script>
