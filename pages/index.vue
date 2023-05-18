@@ -1,11 +1,8 @@
 <template>
   <div>
-    <nav
-      class="fixed z-50 w-full py-4 transition-all duration-300 ease-in-out bg-white shadow-md"
-    >
+    <nav class="fixed z-50 w-full py-4 transition-all duration-300 ease-in-out bg-white shadow-md">
       <div
-        class="flex flex-col gap-4 sm:gap-0 sm:flex-row items-center justify-between max-w-[1440px] mx-auto px-6 xl:px-20"
-      >
+        class="flex flex-col gap-4 sm:gap-0 sm:flex-row items-center justify-between max-w-[1440px] mx-auto px-6 xl:px-20">
         <!-- <div
         class="flex flex-col items-center justify-center w-20 h-20 text-gray-500 bg-gray-100 rounded-md"
       >
@@ -14,18 +11,11 @@
       </div> -->
 
         <a href="#" class="flex flex-col text-slate-500">
-          <span class="text-2xl font-semibold"
-            ><span class="text-3xl font-black text-indigo-500">V</span
-            >oltage</span
-          >
-          <span class="-mt-2.5 pl-[6px] text-xl font-semibold"
-            ><span class="font-black text-indigo-500">W</span>atch</span
-          ></a
-        >
+          <span class="text-2xl font-semibold"><span class="text-3xl font-black text-indigo-500">V</span>oltage</span>
+          <span class="-mt-2.5 pl-[6px] text-xl font-semibold"><span
+              class="font-black text-indigo-500">W</span>atch</span></a>
 
-        <form
-          class="flex flex-col items-center w-full gap-4 space-x-4 sm:w-auto sm:gap-0 sm:flex-row"
-        >
+        <form class="flex flex-col items-center w-full gap-4 space-x-4 sm:w-auto sm:gap-0 sm:flex-row">
           <!-- <label class="relative w-full md:w-96">
           <span
             class="absolute left-2 top-[56%] -translate-y-2/4 text-slate-500 text-xl"
@@ -40,13 +30,8 @@
         </label> -->
           <label class="relative w-full md:w-96">
             <client-only>
-              <v-select
-                v-model="user_station_id"
-                :options="stations"
-                :reduce="(station) => station.id"
-                label="city"
-                :clearable="false"
-              />
+              <v-select v-model="user_station_id" :options="stations" :reduce="(station) => station.id" label="city"
+                :clearable="false" />
 
 
             </client-only>
@@ -59,71 +44,58 @@
         </form>
       </div>
     </nav>
-    <main
-      class="relative max-w-[1440px] bg-gray-50 mx-auto px-6 xl:px-20 pt-72 sm:pt-40 pb-14 space-y-4 sm:space-y-6"
-    >
+    <main class="relative max-w-[1440px] bg-gray-50 mx-auto px-6 xl:px-20 pt-72 sm:pt-40 pb-14 space-y-4 sm:space-y-6">
       <h1 class="text-3xl font-black text-slate-900">
         {{ getCurrentStation?.city }}
       </h1>
       <div class="grid gap-4 sm:grid-cols-2">
-         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
-        >
+        <div
+          class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1">
           <h4 class="text-2xl font-bold text-indigo-900">Nombre de coupures</h4>
 
-     
 
-        <div class="flex flex-wrap items-center gap-3">
+
+          <div class="flex flex-wrap items-center gap-3">
             <p class="font-black text-6xl text-pink-500">
 
               {{ nthLastMonthsCut }}
             </p>
 
-            <span class=""> 
-              / jour
-            </span>
           </div>
         </div>
-         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
-        >
+        <div
+          class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1">
           <h4 class="text-2xl font-bold text-indigo-900">Nombre de signaux de voltages</h4>
 
-     
 
-        <div class="flex flex-wrap items-center gap-3">
+
+          <div class="flex flex-wrap items-center gap-3">
             <p class="font-black text-6xl text-pink-500">
 
               {{ voltageEventsCount }}
             </p>
-
-            <span class=""> 
-              / jour
-            </span>
           </div>
         </div>
-         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
-        >
+        <div
+          class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1">
           <h4 class="text-2xl font-bold text-indigo-900">Nombre de signaux de fréquences</h4>
 
-     
 
-        <div class="flex flex-wrap items-center gap-3">
+
+          <div class="flex flex-wrap items-center gap-3">
             <p class="font-black text-6xl text-pink-500">
 
               {{ frequencyEventsCount }}
             </p>
-
-            <span class=""> 
-              / jour
-            </span>
           </div>
         </div>
-         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
-        >
-          <h4 class="text-2xl font-bold text-indigo-900">Nombre de stations</h4>
+        <div
+          class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1">
+          <h4 class="text-2xl font-bold text-indigo-900">Nombre total de stations</h4>
 
-     
 
-        <div class="flex flex-wrap items-center gap-3">
+
+          <div class="flex flex-wrap items-center gap-3">
             <p class="font-black text-6xl text-pink-500">
 
               {{ stations.length }}
@@ -166,9 +138,9 @@ export default {
         console.log("data stations =>", data);
         stations = data;
 
-        user_station_id = 105;
+        // user_station_id = 105;
         infDatetime = new Date()
-        // user_station_id = data[0].id;
+        user_station_id = data[0].id;
       });
 
     return {
@@ -245,14 +217,16 @@ export default {
 
   mounted() {
     // console.log("winboy", this.user_station_id);
-    fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}`)
+    let timestamp = new Date(this.infDatetime.getTime())
+      timestamp = new Date(timestamp.setDate(timestamp.getDate() + 1));    fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${(timestamp).toISOString()}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("data voltage =>", data);
         this.voltages = data;
+        console.log("voltage => ", JSON.stringify(this.voltages))
       });
-
-    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}`)
+    
+    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("data frequency =>", data);
@@ -261,37 +235,42 @@ export default {
   },
   watch: {
     user_station_id() {
-          // console.log("winboy", this.user_station_id);
-    fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("data voltage =>", data);
-        this.voltages = data;
-        console.log("voltage => ", this.voltages)
-      });
+      // console.log("winboy", this.user_station_id);
+      let timestamp = new Date(this.infDatetime.getTime())
+      timestamp = new Date(timestamp.setDate(timestamp.getDate() + 1));      
+      fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("data voltage =>", data);
+          this.voltages = data;
+          console.log("voltage => ", JSON.stringify(this.voltages))
+        });
 
-    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("data frequency =>", data);
-        this.frequencies = data;
-      });
+      fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("data frequency =>", data);
+          this.frequencies = data;
+        });
     },
     infDatetime() {
-      fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${this.infDatetime.toISOString()}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("data voltage =>", data);
-        this.voltages = data;
-        console.log("voltage => ", JSON.stringify(this.voltages))
-      });
 
-    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${this.infDatetime.toISOString()}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("data frequency =>", data);
-        this.frequencies = data;
-      });
+      let timestamp = new Date(this.infDatetime.getTime())
+      timestamp = new Date(timestamp.setDate(timestamp.getDate() + 1));
+      fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("data voltage =>", data);
+          this.voltages = data;
+          console.log("voltage => ", JSON.stringify(this.voltages))
+        });
+
+      fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("data frequency =>", data);
+          this.frequencies = data;
+        });
     }
   }
 };
