@@ -45,6 +45,7 @@
                 :options="stations"
                 :reduce="(station) => station.id"
                 label="city"
+                :clearable="false"
               />
             </client-only>
           </label>
@@ -165,7 +166,8 @@ export default {
         console.log("data stations =>", data);
         stations = data;
 
-        user_station_id = data[0].id;
+        user_station_id = 105;
+        // user_station_id = data[0].id;
       });
 
     return {
@@ -183,29 +185,21 @@ export default {
   computed: {
     chartDataLine() {
       return {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
+        labels: this.voltages.map(volt => volt.timestamp),
         datasets: [
           {
             label: "Voltages",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(255, 99, 132, 1)",
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: this.voltages.map(volt => volt.value),
           },
           {
             label: "Frequencies",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(100, 255, 0, 1)",
-            data: [65, 59, 80, 81, 56, 55, 40].reverse(),
+            data: this.frequencies.map(freq => freq.value),
           },
         ],
       };
@@ -224,6 +218,9 @@ export default {
         ],
       };
     },
+    nthLastMonthsCut() {
+      return this.voltages.length
+    },
     // stationID() {
     //   return this.stations.find(station => station.)
     // },
@@ -233,6 +230,7 @@ export default {
       );
     },
   },
+
   mounted() {
     // console.log("winboy", this.user_station_id);
     fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}`)
@@ -249,6 +247,25 @@ export default {
         this.frequencies = data;
       });
   },
+  watch: {
+    user_station_id() {
+          // console.log("winboy", this.user_station_id);
+    fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("data voltage =>", data);
+        this.voltages = data;
+        console.log("voltage => ", this.voltages)
+      });
+
+    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("data frequency =>", data);
+        this.frequencies = data;
+      });
+    }
+  }
 };
 </script>
 
