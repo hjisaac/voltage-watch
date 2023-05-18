@@ -128,6 +128,10 @@ const eventUrl = "http://localhost:5000/events";
 export default {
   components: { DatePicker },
   name: "voltage",
+
+  beforeDestroy()  {
+    clearInterval(this.timer)
+  },
   async asyncData() {
     let user_station_id;
     let infDatetime;
@@ -154,6 +158,7 @@ export default {
       voltages: [],
       frequencies: [],
       // user_station_id: 0,
+      time: null,
     };
   },
   computed: {
@@ -178,20 +183,6 @@ export default {
         ],
       };
     },
-    // chartData() {
-    //   return {
-    //     labels: [1, 2, 3, 4, 5],
-    //     datasets: [
-    //       {
-    //         label: "",
-    //         data: [2, 1, 16, 3, 2],
-    //         backgroundColor: "rgba(20, 255, 0, 0.3)",
-    //         borderColor: "rgba(100, 255, 0, 1)",
-    //         borderWidth: 2,
-    //       },
-    //     ],
-    //   };
-    // },
     nthLastMonthsCut() {
       return this.voltages.filter(volt => !volt.value).length
     },
@@ -217,59 +208,41 @@ export default {
 
   mounted() {
     // console.log("winboy", this.user_station_id);
-    let timestamp = new Date(this.infDatetime.getTime())
-      timestamp = new Date(timestamp.setDate(timestamp.getDate() + 1));    fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${(timestamp).toISOString()}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("data voltage =>", data);
-        this.voltages = data;
-        console.log("voltage => ", JSON.stringify(this.voltages))
-      });
-    
-    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log("data frequency =>", data);
-        this.frequencies = data;
-      });
+    this.loadData()
+
+    this.timer = setInterval(this.loadData, 2000)
   },
   watch: {
     user_station_id() {
-      // console.log("winboy", this.user_station_id);
-      let timestamp = new Date(this.infDatetime.getTime())
-      timestamp = new Date(timestamp.setDate(timestamp.getDate() + 1));      
-      fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log("data voltage =>", data);
-          this.voltages = data;
-          console.log("voltage => ", JSON.stringify(this.voltages))
-        });
-
-      fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log("data frequency =>", data);
-          this.frequencies = data;
-        });
+      this.loadData()
     },
     infDatetime() {
-
+      this.loadData()
+    }
+  },
+  methods: {
+    loadData() {
       let timestamp = new Date(this.infDatetime.getTime())
       timestamp = new Date(timestamp.setDate(timestamp.getDate() + 1));
       fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
         .then((response) => response.json())
         .then((data) => {
-          // console.log("data voltage =>", data);
-          this.voltages = data;
+
+          console.log(" 1 => ", data.toString)
+
+          if(data.toString() !== this.voltages.toString()) {
+            this.voltages = data;
+          }
           console.log("voltage => ", JSON.stringify(this.voltages))
         });
 
       fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${timestamp.toISOString()}`)
         .then((response) => response.json())
         .then((data) => {
-          // console.log("data frequency =>", data);
-          this.frequencies = data;
+
+          if(data.toString() !== this.frequencies.toString()) {
+            this.frequencies = data;
+          }
         });
     }
   }
