@@ -47,100 +47,96 @@
                 label="city"
                 :clearable="false"
               />
+
+
+            </client-only>
+          </label>
+          <label>
+            <client-only>
+              <DatePicker v-model="infDatetime" :clearable="false"></DatePicker>
             </client-only>
           </label>
         </form>
       </div>
     </nav>
     <main
-      class="h-[1000px] relative max-w-[1440px] bg-gray-50 mx-auto px-6 xl:px-20 pt-72 sm:pt-40 pb-14 space-y-4 sm:space-y-6"
+      class="relative max-w-[1440px] bg-gray-50 mx-auto px-6 xl:px-20 pt-72 sm:pt-40 pb-14 space-y-4 sm:space-y-6"
     >
       <h1 class="text-3xl font-black text-slate-900">
         {{ getCurrentStation?.city }}
       </h1>
-      <client-only>
-        <BarChart :data="chartData" />
-        <LineChart :data="chartDataLine" />
-      </client-only>
       <div class="grid gap-4 sm:grid-cols-2">
-        <!-- <div
-          class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
+         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
         >
-          <h4 class="text-2xl font-bold text-indigo-900">Godwin Aguiah</h4>
+          <h4 class="text-2xl font-bold text-indigo-900">Nombre de coupures</h4>
 
-          <p class="flex items-center">
-            <i class="text-2xl text-pink-500 bx bx-link"></i>
-            <a
-              href="#"
-              class="text-indigo-600 transition-all duration-300 ease-in-out cursor-pointer hover:underline"
-              >godwinaguiah.me</a
-            >
-          </p>
+     
 
-          <div class="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              class="px-3 py-1 text-sm font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white border-2 rounded-full group hover:border-indigo-500 hover:bg-indigo-500 hover:bg-indigo-50 hover:text-white"
-            >
-              <span
-                class="text-pink-500 transition-all duration-300 ease-in-out group-hover:text-white"
-                >#</span
-              >
-              Frontend
-            </button>
+        <div class="flex flex-wrap items-center gap-3">
+            <p class="font-black text-6xl text-pink-500">
 
-            <button
-              type="button"
-              class="px-3 py-1 text-sm font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white border-2 rounded-full group hover:border-indigo-500 hover:bg-indigo-500 hover:bg-indigo-50 hover:text-white"
-            >
-              <span
-                class="text-pink-500 transition-all duration-300 ease-in-out group-hover:text-white"
-                >#</span
-              >
-              Design
-            </button>
+              {{ nthLastMonthsCut }}
+            </p>
+
+            <span class=""> 
+              / jour
+            </span>
           </div>
         </div>
-
-        <div
-          class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
+         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
         >
-          <h4 class="text-2xl font-bold text-indigo-900">Herval Noumonvi</h4>
+          <h4 class="text-2xl font-bold text-indigo-900">Nombre de signaux de voltages</h4>
 
-          <p class="flex items-center">
-            <i class="text-2xl text-pink-500 bx bx-link"></i>
-            <a
-              href="#"
-              class="text-indigo-600 transition-all duration-300 ease-in-out cursor-pointer hover:underline"
-              >hervalnoumonvi.me</a
-            >
-          </p>
+     
 
-          <div class="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              class="px-3 py-1 text-sm font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white border-2 rounded-full group hover:border-indigo-500 hover:bg-indigo-500 hover:bg-indigo-50 hover:text-white"
-            >
-              <span
-                class="text-pink-500 transition-all duration-300 ease-in-out group-hover:text-white"
-                >#</span
-              >
-              Backend
-            </button>
+        <div class="flex flex-wrap items-center gap-3">
+            <p class="font-black text-6xl text-pink-500">
 
-            <button
-              type="button"
-              class="px-3 py-1 text-sm font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white border-2 rounded-full group hover:border-indigo-500 hover:bg-indigo-500 hover:bg-indigo-50 hover:text-white"
-            >
-              <span
-                class="text-pink-500 transition-all duration-300 ease-in-out group-hover:text-white"
-                >#</span
-              >
-              Frontend
-            </button>
+              {{ voltageEventsCount }}
+            </p>
+
+            <span class=""> 
+              / jour
+            </span>
           </div>
-        </div> -->
+        </div>
+         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
+        >
+          <h4 class="text-2xl font-bold text-indigo-900">Nombre de signaux de fréquences</h4>
+
+     
+
+        <div class="flex flex-wrap items-center gap-3">
+            <p class="font-black text-6xl text-pink-500">
+
+              {{ frequencyEventsCount }}
+            </p>
+
+            <span class=""> 
+              / jour
+            </span>
+          </div>
+        </div>
+         <div class="p-4 space-y-2 transition-all duration-300 ease-in-out bg-white border rounded-md hover:-translate-y-1"
+        >
+          <h4 class="text-2xl font-bold text-indigo-900">Nombre de stations</h4>
+
+     
+
+        <div class="flex flex-wrap items-center gap-3">
+            <p class="font-black text-6xl text-pink-500">
+
+              {{ stations.length }}
+            </p>
+
+          </div>
+        </div>
       </div>
+      <client-only>
+        <!-- <BarChart :data="chartData" /> -->
+        <LineChart :data="chartDataLine" />
+      </client-only>
+
     </main>
     <footer class="mx-auto  mt-10 w-full max-w-[1440px] px-6 xl:px-20 border-t">
       <p class="my-5 text-sm leading-6 text-center text-slate-500">
@@ -152,13 +148,17 @@
 
 <script>
 import fetch from "isomorphic-fetch";
+import DatePicker from 'vue2-datepicker';
+import 'vue2-datepicker/index.css';
 const stationsUrl = "http://localhost:5000/stations";
 const eventUrl = "http://localhost:5000/events";
 
 export default {
+  components: { DatePicker },
   name: "voltage",
   async asyncData() {
     let user_station_id;
+    let infDatetime;
     let stations = [];
     await fetch(stationsUrl)
       .then((response) => response.json())
@@ -167,12 +167,14 @@ export default {
         stations = data;
 
         user_station_id = 105;
+        infDatetime = new Date()
         // user_station_id = data[0].id;
       });
 
     return {
       user_station_id,
       stations,
+      infDatetime,
     };
   },
   data() {
@@ -192,34 +194,40 @@ export default {
             fill: false,
             tension: 0.1,
             borderColor: "rgba(255, 99, 132, 1)",
-            data: this.voltages.map(volt => volt.value),
+            data: this.voltages.map(volt => volt.value || 0),
           },
           {
             label: "Frequencies",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(100, 255, 0, 1)",
-            data: this.frequencies.map(freq => freq.value),
+            data: this.frequencies.map(freq => freq.value || 58),
           },
         ],
       };
     },
-    chartData() {
-      return {
-        labels: [1, 2, 3, 4, 5],
-        datasets: [
-          {
-            label: "",
-            data: [2, 1, 16, 3, 2],
-            backgroundColor: "rgba(20, 255, 0, 0.3)",
-            borderColor: "rgba(100, 255, 0, 1)",
-            borderWidth: 2,
-          },
-        ],
-      };
-    },
+    // chartData() {
+    //   return {
+    //     labels: [1, 2, 3, 4, 5],
+    //     datasets: [
+    //       {
+    //         label: "",
+    //         data: [2, 1, 16, 3, 2],
+    //         backgroundColor: "rgba(20, 255, 0, 0.3)",
+    //         borderColor: "rgba(100, 255, 0, 1)",
+    //         borderWidth: 2,
+    //       },
+    //     ],
+    //   };
+    // },
     nthLastMonthsCut() {
+      return this.voltages.filter(volt => !volt.value).length
+    },
+    voltageEventsCount() {
       return this.voltages.length
+    },
+    frequencyEventsCount() {
+      return this.frequencies.length
     },
     // stationID() {
     //   return this.stations.find(station => station.)
@@ -229,6 +237,10 @@ export default {
         (station) => station.id === this.user_station_id
       );
     },
+  },
+
+  created() {
+    console.log("creation says => ", this.infDatetime)
   },
 
   mounted() {
@@ -259,6 +271,22 @@ export default {
       });
 
     fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("data frequency =>", data);
+        this.frequencies = data;
+      });
+    },
+    infDatetime() {
+      fetch(`${eventUrl}/?measure=voltage&stationId=${this.user_station_id}&timestamp_lte=${this.infDatetime.toISOString()}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("data voltage =>", data);
+        this.voltages = data;
+        console.log("voltage => ", JSON.stringify(this.voltages))
+      });
+
+    fetch(`${eventUrl}/?measure=frequency&stationId=${this.user_station_id}&timestamp_lte=${this.infDatetime.toISOString()}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("data frequency =>", data);

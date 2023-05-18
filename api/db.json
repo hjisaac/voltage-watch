@@ -60,7 +60,7 @@
       "stationId": 100,
       "measure": "voltage",
       "value": null,
-      "timestamp": null
+      "timestamp": "5/17/2023"
     },
     {
       "id": 6,
@@ -176,28 +176,28 @@
     },
     {
       "id": 22,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "voltage",
       "value": 215,
       "timestamp": "5/17/2023"
     },
     {
       "id": 23,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "voltage",
       "value": 202,
       "timestamp": "5/17/2023"
     },
     {
       "id": 24,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "voltage",
       "value": 214,
       "timestamp": "5/17/2023"
     },
     {
       "id": 25,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "voltage",
       "value": 212,
       "timestamp": "5/17/2023"
@@ -218,7 +218,7 @@
     },
     {
       "id": 28,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "frequency",
       "value": 59,
       "timestamp": "5/17/2023"
@@ -232,28 +232,28 @@
     },
     {
       "id": 30,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "voltage",
       "value": 202,
       "timestamp": "5/17/2023"
     },
     {
       "id": 31,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "frequency",
       "value": 59,
       "timestamp": "5/17/2023"
     },
     {
       "id": 32,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "frequency",
       "value": 60,
       "timestamp": "5/17/2023"
     },
     {
       "id": 33,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "frequency",
       "value": 59,
       "timestamp": "5/17/2023"
@@ -281,7 +281,7 @@
     },
     {
       "id": 37,
-      "stationId": 100,
+      "stationId": 101,
       "measure": "frequency",
       "value": 60,
       "timestamp": "5/17/2023"
@@ -298,7 +298,7 @@
       "stationId": 100,
       "measure": "voltage",
       "value": null,
-      "timestamp": null
+      "timestamp": "5/17/2023"
     },
     {
       "id": 40,
@@ -424,7 +424,7 @@
       "stationId": 102,
       "measure": "voltage",
       "value": null,
-      "timestamp": null
+      "timestamp": "5/17/2023"
     },
     {
       "id": 58,
@@ -536,7 +536,7 @@
       "stationId": 103,
       "measure": "frequency",
       "value": null,
-      "timestamp": null
+      "timestamp": "5/17/2023"
     },
     {
       "id": 74,
@@ -571,7 +571,7 @@
       "stationId": 103,
       "measure": "frequency",
       "value": null,
-      "timestamp": null
+      "timestamp": "5/17/2023"
     },
     {
       "id": 79,
@@ -592,7 +592,7 @@
       "stationId": 104,
       "measure": "frequency",
       "value": null,
-      "timestamp": null
+      "timestamp": "5/17/2023"
     },
     {
       "id": 82,
