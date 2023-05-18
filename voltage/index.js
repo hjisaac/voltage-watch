@@ -93,7 +93,9 @@ const getFrequencyValue = () => {
 }
 
 const getVoltageValue = () => {
-    return 220 - getRandomInt(19)
+   const volt = 220 - getRandomInt(19)
+
+   return [...Array(6).fill(volt), ...Array(4).fill(0)][getRandomInt(10)];
 }
 
 const writeEvent = function (allStations) {
