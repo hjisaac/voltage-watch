@@ -1,22 +1,19 @@
 const fetch = require("isomorphic-fetch");
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-  
+  return Math.floor(Math.random() * max);
+}
 
 const stationsUrl = "http://localhost:5000/stations";
 const eventUrl = "http://localhost:5000/events";
 // console.log(getStations)
 
-
 const getStationsIds = (allStations) => {
-    return allStations.map(station => station.id)
-}
-
+  return allStations.map((station) => station.id);
+};
 
 class VoltageEvent {
-  constructor({measure, stationId, value, timestamp}) {
+  constructor({ measure, stationId, value, timestamp }) {
     this.stationId = stationId;
     this.measure = measure;
     this.value = value;
@@ -89,25 +86,25 @@ const writeStation = function (station) {
 };
 
 const getFrequencyValue = () => {
-    return [...Array(6).fill(60), ...Array(2).fill(59), ...Array(2).fill(58)][getRandomInt(10)];
-}
+  return [...Array(6).fill(60), ...Array(2).fill(59), ...Array(2).fill(58)][
+    getRandomInt(10)
+  ];
+};
 
 const getVoltageValue = () => {
-   const volt = 220 - getRandomInt(19)
+  const volt = 220 - getRandomInt(19);
 
-   return [...Array(6).fill(volt), ...Array(4).fill(0)][getRandomInt(10)];
-}
+  return [...Array(6).fill(volt), ...Array(4).fill(0)][getRandomInt(10)];
+};
 
 const writeEvent = function (allStations) {
-    const allIds = getStationsIds(allStations) 
-    const mesure = ["frequency", "voltage"][getRandomInt(2)]
-    const event = new VoltageEvent(
-        {
-            stationId: allIds[getRandomInt(allIds.length + 1)],
-            measure: mesure,
-            value: mesure === "frequency" ? getFrequencyValue() : getVoltageValue()
-        }
-    )
+  const allIds = getStationsIds(allStations);
+  const mesure = ["frequency", "voltage"][getRandomInt(2)];
+  const event = new VoltageEvent({
+    stationId: allIds[getRandomInt(allIds.length + 1)],
+    measure: mesure,
+    value: mesure === "frequency" ? getFrequencyValue() : getVoltageValue(),
+  });
   try {
     fetch(eventUrl, {
       method: "POST",
@@ -119,17 +116,43 @@ const writeEvent = function (allStations) {
   } catch (error) {}
 };
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-fetch(stationsUrl)
-  .then((response) => {
-    console.log("response count => ", response);
-    return response.json();
-  })
-  .then((data) => {
-    // console.log("data => ", data)
-    allStations = data
-    writeEvent(allStations)
-  });
+// while (true) {
+//   fetch(stationsUrl)
+//     .then((response) => {
+//       console.log("response count => ", response);
+//       return response.json();
+//     })
+//     .then((data) => {
+//       // console.log("data => ", data)
+//       allStations = data;
+//       writeEvent(allStations);
+//     });
+
+//   await sleep(1000);
+// }
+
+async function fetchData() {
+  while (true) {
+    try {
+      const response = await fetch(stationsUrl);
+      console.log("response count => ", response);
+      const data = await response.json();
+      // console.log("data => ", data)
+      allStations = data;
+      writeEvent(allStations);
+    } catch (error) {
+      console.error(error);
+    }
+
+    await sleep(1000);
+  }
+}
+
+fetchData();
 
 
 // writeStation();

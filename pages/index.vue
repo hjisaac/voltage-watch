@@ -164,21 +164,21 @@ export default {
   computed: {
     chartDataLine() {
       return {
-        labels: this.voltages.map(volt => volt.timestamp),
+        labels: this.voltages.map(volt => volt.timestamp).slice(-10),
         datasets: [
           {
             label: "Voltages",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(255, 99, 132, 1)",
-            data: this.voltages.map(volt => volt.value || 0),
+            data: this.voltages.map(volt => volt.value || 0).slice(-10),
           },
           {
             label: "Frequencies",
             fill: false,
             tension: 0.1,
             borderColor: "rgba(100, 255, 0, 1)",
-            data: this.frequencies.map(freq => freq.value || 58),
+            data: this.frequencies.map(freq => freq.value || 58).slice(-10),
           },
         ],
       };
