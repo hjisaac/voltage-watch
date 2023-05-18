@@ -44,6 +44,7 @@
                 v-model="user_station_id"
                 :options="stations"
                 :reduce="(station) => station.id"
+                :clearable="false"
                 label="city"
               />
             </client-only>
@@ -141,7 +142,7 @@
         </div> -->
       </div>
     </main>
-    <footer class="mx-auto  mt-10 w-full max-w-[1440px] px-6 xl:px-20 border-t">
+    <footer class="mx-auto mt-10 w-full max-w-[1440px] px-6 xl:px-20 border-t">
       <p class="my-5 text-sm leading-6 text-center text-slate-500">
         © 2023 Voltage Watch - hackaton. All rights reserved.
       </p>
