@@ -1,7 +1,7 @@
 # Voltage watch
 
-## Demo video
-./demo.webm
+## Demo
+![](demo.gif)
 
 ## Build Setup
 
