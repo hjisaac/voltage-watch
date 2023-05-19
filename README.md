@@ -11,21 +11,21 @@ electrical service.
 ## Demo
 ![](demo.gif)
 
-## Build Setup
+## Run the project
 
 ```bash
 # install dependencies
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# Launch the frontend (localhost:3000)
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+# Launch the api
+$ yarn api
 
-# generate static project
-$ yarn generate
+# Launch the the script to simulate the data generation by the boxes
+node voltage/index.js
+
 ```
 
 For detailed explanation on how things work, check out [documentation](https://nuxtjs.org).
