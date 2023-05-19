@@ -28,4 +28,4 @@ node voltage/index.js
 
 ```
 
-For detailed explanation on how things work, check out [documentation](https://nuxtjs.org).
+For detailed explanation about nuxt, check out [documentation](https://nuxtjs.org).
