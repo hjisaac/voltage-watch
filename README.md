@@ -14,7 +14,7 @@ electrical service.
 ## Run the project
 
 ```bash
-# install dependencies
+# Install dependencies
 $ yarn install
 
 # Launch the frontend (localhost:3000)
